@@ -1,0 +1,109 @@
+esphome:
+  name: powermeter
+  friendly_name: powermeter
+  on_boot:
+    priority: -100.0
+    then:
+      - delay: 2s
+
+esp8266:
+  board: nodemcu
+  # arduino_version: 2.5.2
+  
+external_components:
+  - source:
+      type: git
+      url: https://github.com/HeMan/esphome-components
+    components: [hdlc]
+
+wifi:
+  ssid: !secret wifissid
+  password: !secret wifipwd
+
+logger:
+  level: VERY_VERBOSE
+  baud_rate: 0 # disable logging over uart
+
+api:
+  encryption: 
+    key: !secret encryption_key
+
+ota:
+
+uart:
+  id: uart_bus
+  tx_pin: TX
+  rx_pin: RX
+  baud_rate: 115200
+
+
+sensor:
+  - platform: hdlc
+    uart_id: uart_bus
+    phase_1:
+      voltage:
+        name: "Voltage phase 1"
+      current:
+        name: "Current phase 1"
+      import:
+        active_power:
+          name: "Import active power phase 1"
+        reactive_power:
+          name: "Import reactive power phase 1"
+      export:
+        active_power:
+          name: "Export active power phase 1"
+        reactive_power:
+          name: "Export reactive power phase 1"
+    phase_2:
+      voltage:
+        name: "Voltage phase 2"
+      current:
+        name: "Current phase 2"
+      import:
+        active_power:
+          name: "Import active power phase 2"
+        reactive_power:
+          name: "Import reactive power phase 2"
+      export:
+        active_power:
+          name: "Export active power phase 2"
+        reactive_power:
+          name: "Export reactive power phase 2"
+    phase_3:
+      voltage:
+        name: "Voltage phase 3"
+      current:
+        name: "Current phase 3"
+      import:
+        active_power:
+          name: "Import active power phase 3"
+        reactive_power:
+          name: "Import reactive power phase 3"
+      export:
+        active_power:
+          name: "Export active power phase 3"
+        reactive_power:
+          name: "Export reactive power phase 3"
+    momentary:
+      import:
+        active_power:
+          name: "Import active power momentary"
+        reactive_power:
+          name: "Import reactive power momentary"
+      export:
+        active_power:
+          name: "Export active power momentary"
+        reactive_power:
+          name: "Export reactive power momentary"
+    cumulative:
+      import:
+        active_power:
+          name: "Import active power momentary"
+        reactive_power:
+          name: "Import reactive power momentary"
+      export:
+        active_power:
+          name: "Export active power momentary"
+        reactive_power:
+          name: "Export reactive power momentary"
