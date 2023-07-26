@@ -9,7 +9,7 @@ esphome:
 esp8266:
   board: nodemcu
   # arduino_version: 2.5.2
-  
+
 external_components:
   - source:
       type: git
@@ -25,7 +25,7 @@ logger:
   baud_rate: 0 # disable logging over uart
 
 api:
-  encryption: 
+  encryption:
     key: !secret encryption_key
 
 ota:
@@ -42,68 +42,68 @@ sensor:
     uart_id: uart_bus
     phase_1:
       voltage:
-        name: "Voltage phase 1"
+        name: "Voltage Phase 1"
       current:
-        name: "Current phase 1"
+        name: "Current Phase 1"
       import:
         active_power:
-          name: "Import active power phase 1"
+          name: "Momentary Active Import Phase 1"
         reactive_power:
-          name: "Import reactive power phase 1"
+          name: "Momentary Reactive Import Phase 1"
       export:
         active_power:
-          name: "Export active power phase 1"
+          name: "Momentary Active Export Phase 1"
         reactive_power:
-          name: "Export reactive power phase 1"
+          name: "Momentary Reactive Export Phase 1"
     phase_2:
       voltage:
-        name: "Voltage phase 2"
+        name: "Voltage Phase 2"
       current:
-        name: "Current phase 2"
+        name: "Current Phase 2"
       import:
         active_power:
-          name: "Import active power phase 2"
+          name: "Momentary Active Import Phase 2"
         reactive_power:
-          name: "Import reactive power phase 2"
+          name: "Momentary Reactive Import Phase 2"
       export:
         active_power:
-          name: "Export active power phase 2"
+          name: "Momentary Active Export Phase 2"
         reactive_power:
-          name: "Export reactive power phase 2"
+          name: "Momentary Reactive Export Phase 2"
     phase_3:
       voltage:
-        name: "Voltage phase 3"
+        name: "Voltage Phase 3"
       current:
-        name: "Current phase 3"
+        name: "Current Phase 3"
       import:
         active_power:
-          name: "Import active power phase 3"
+          name: "Momentary Active Import Phase 3"
         reactive_power:
-          name: "Import reactive power phase 3"
+          name: "Momentary Reactive Import Phase 3"
       export:
         active_power:
-          name: "Export active power phase 3"
+          name: "Momentary Active Export Phase 3"
         reactive_power:
-          name: "Export reactive power phase 3"
+          name: "Momentary Reactive Export Phase 3"
     momentary:
       import:
         active_power:
-          name: "Import active power momentary"
+          name: "Momentary Active Import"
         reactive_power:
-          name: "Import reactive power momentary"
+          name: "Momentary Reactive Import"
       export:
         active_power:
-          name: "Export active power momentary"
+          name: "Momentary Active Export"
         reactive_power:
-          name: "Export reactive power momentary"
+          name: "Momentary Reactive Export"
     cumulative:
       import:
         active_power:
-          name: "Import active power momentary"
+          name: "Cumulative Active Import"
         reactive_power:
-          name: "Import reactive power momentary"
+          name: "Cumulative Reactive Import"
       export:
         active_power:
-          name: "Export active power momentary"
+          name: "Cumulative Active Export"
         reactive_power:
-          name: "Export reactive power momentary"
+          name: "Cumulative Reactive Export"
