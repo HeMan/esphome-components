@@ -1,25 +1,23 @@
+import esphome.codegen as cg
+import esphome.config_validation as cv
 from esphome import pins
 from esphome.components import uart
-import esphome.codegen as cg
+from esphome.const import CONF_ID, CONF_INPUT, CONF_INVERTED, CONF_NUMBER
 
-from esphome.const import CONF_ID, CONF_INPUT, CONF_NUMBER, CONF_INVERTED
-
-import esphome.config_validation as cv
-
-CONF_SERIAL_IO = "serial_io_expansion"
+CONF_SERIAL_IO = "serial_io_expander"
 
 
-serial_io_expansion_ns = cg.esphome_ns.namespace("serial_io_expansion")
-Serial_io_expansionComponent = serial_io_expansion_ns.class_(
-    "SerialIOExpansion", cg.Component, uart.UARTDevice
+serial_io_expander_ns = cg.esphome_ns.namespace("serial_io_expander")
+Serial_io_expanderComponent = serial_io_expander_ns.class_(
+    "SerialIOExpander", cg.Component, uart.UARTDevice
 )
-SerialIOGPIOPin = serial_io_expansion_ns.class_(
-    "SerialIOGPIOPin", cg.GPIOPin, cg.Parented.template(Serial_io_expansionComponent)
+SerialIOGPIOPin = serial_io_expander_ns.class_(
+    "SerialIOGPIOPin", cg.GPIOPin, cg.Parented.template(Serial_io_expanderComponent)
 )
 
 CONFIG_SCHEMA = cv.Schema(
     {
-        cv.GenerateID(): cv.declare_id(Serial_io_expansionComponent),
+        cv.GenerateID(): cv.declare_id(Serial_io_expanderComponent),
     }
 ).extend(uart.UART_DEVICE_SCHEMA)
 
@@ -38,7 +36,7 @@ SERIAL_IO_PIN_SCHEMA = pins.gpio_base_schema(
     mode_validator=_validate_input_mode,
 ).extend(
     {
-        cv.Required(CONF_SERIAL_IO): cv.use_id(Serial_io_expansionComponent),
+        cv.Required(CONF_SERIAL_IO): cv.use_id(Serial_io_expanderComponent),
     }
 )
 
