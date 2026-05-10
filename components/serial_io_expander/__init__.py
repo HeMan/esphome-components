@@ -32,7 +32,7 @@ SERIAL_IO_PIN_SCHEMA = pins.gpio_base_schema(
     SerialIOGPIOPin,
     cv.int_range(min=0, max=7),
     modes=[CONF_INPUT],
-    invertable=True,
+    invertible=True,
     mode_validator=_validate_input_mode,
 ).extend(
     {

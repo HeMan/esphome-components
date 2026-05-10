@@ -14,7 +14,7 @@ void SerialIOExpander::loop() {
 }
 
 bool SerialIOExpander::digital_read(uint8_t pin_) {
-  return this->last_read_ && (1 << pin_);
+  return this->last_read_ & (1 << pin_);
 }
 
 float SerialIOExpander::get_setup_priority() const {
